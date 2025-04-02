@@ -1,0 +1,14 @@
+C:\Users\nom\RiderProjects\PecaGame\PecaGame\bin\Debug\net9.0-windows\PecaGame.exe
+C:\Users\nom\RiderProjects\PecaGame\PecaGame\bin\Debug\net9.0-windows\PecaGame.deps.json
+C:\Users\nom\RiderProjects\PecaGame\PecaGame\bin\Debug\net9.0-windows\PecaGame.runtimeconfig.json
+C:\Users\nom\RiderProjects\PecaGame\PecaGame\bin\Debug\net9.0-windows\PecaGame.dll
+C:\Users\nom\RiderProjects\PecaGame\PecaGame\bin\Debug\net9.0-windows\PecaGame.pdb
+C:\Users\nom\RiderProjects\PecaGame\PecaGame\obj\Debug\net9.0-windows\PecaGame.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nom\RiderProjects\PecaGame\PecaGame\obj\Debug\net9.0-windows\PecaGame.AssemblyInfoInputs.cache
+C:\Users\nom\RiderProjects\PecaGame\PecaGame\obj\Debug\net9.0-windows\PecaGame.AssemblyInfo.cs
+C:\Users\nom\RiderProjects\PecaGame\PecaGame\obj\Debug\net9.0-windows\PecaGame.csproj.CoreCompileInputs.cache
+C:\Users\nom\RiderProjects\PecaGame\PecaGame\obj\Debug\net9.0-windows\PecaGame.dll
+C:\Users\nom\RiderProjects\PecaGame\PecaGame\obj\Debug\net9.0-windows\refint\PecaGame.dll
+C:\Users\nom\RiderProjects\PecaGame\PecaGame\obj\Debug\net9.0-windows\PecaGame.pdb
+C:\Users\nom\RiderProjects\PecaGame\PecaGame\obj\Debug\net9.0-windows\PecaGame.genruntimeconfig.cache
+C:\Users\nom\RiderProjects\PecaGame\PecaGame\obj\Debug\net9.0-windows\ref\PecaGame.dll
