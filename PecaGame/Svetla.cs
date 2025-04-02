@@ -8,4 +8,10 @@ public class Svetla
     {
         FuckCount = fuckCount;
     }
+
+    public void FuckSvetla(Pecata pecata)
+    {
+        FuckCount++;
+        pecata.Defense += FuckCount * 2;
+    }
 }

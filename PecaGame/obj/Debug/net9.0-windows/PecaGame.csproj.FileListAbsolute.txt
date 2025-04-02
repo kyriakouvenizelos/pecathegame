@@ -14,3 +14,4 @@ C:\Users\nom\RiderProjects\PecaGame\PecaGame\obj\Debug\net9.0-windows\PecaGame.g
 C:\Users\nom\RiderProjects\PecaGame\PecaGame\obj\Debug\net9.0-windows\ref\PecaGame.dll
 C:\Users\nom\RiderProjects\PecaGame\PecaGame\obj\Debug\net9.0-windows\PecaGame.Form1.resources
 C:\Users\nom\RiderProjects\PecaGame\PecaGame\obj\Debug\net9.0-windows\PecaGame.csproj.GenerateResource.cache
+C:\Users\nom\RiderProjects\PecaGame\PecaGame\obj\Debug\net9.0-windows\PecaGame.sourcelink.json

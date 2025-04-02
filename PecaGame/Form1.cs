@@ -1,9 +1,13 @@
+using System.Runtime.Intrinsics.Arm;
+
 namespace PecaGame;
 
 public partial class Form1 : Form
 {
     private Pecata pecata = new Pecata(100);
     private Enemy currentEnemyMaker;
+    static Random rand = new Random();
+    private Svetla svetla = new Svetla(0);
     public Form1()
     {
         InitializeComponent();
@@ -19,25 +23,43 @@ public partial class Form1 : Form
         }
         else
         {
-            currentEnemy.Text = currentEnemyMaker.Name;
-            enemyhealth.Text = currentEnemyMaker.Health.ToString();
-            if (currentEnemyMaker.Health > 0)
+            if (pecata.Health > 0)
             {
-                TakeEnemyDamage();
-                TakePecaDamage();
+                currentEnemy.Text = currentEnemyMaker.Name;
+                enemyhealth.Text = currentEnemyMaker.Health.ToString();
+                if (rand.Next(100) < 15)
+                {
+                    MessageBox.Show("pecata missed! MALEEEEEEEE");
+                    TakePecaDamage();
+                }
+                else
+                {
+                    if (currentEnemyMaker.Health > 0)
+                    {
+                        TakeEnemyDamage();
+                        TakePecaDamage();
+                    }
+                    else
+                    {
+                        MessageBox.Show("peca won!");
+                        currentEnemy.Text = null;
+                        enemyhealth.Text = null;
+                        currentEnemyMaker = null;
+                    }
+                }
+                    
             }
             else
             {
-                MessageBox.Show("peca won!");
-                currentEnemy.Text = null;
-                enemyhealth.Text = null;
+                MessageBox.Show("NE NE O NEEEEEEE!!!");
+                this.Close();
             }
         }
     }
 
     void FindEnemy()
     {
-        currentEnemyMaker = new Enemy("desi mesi minion", 150);
+        currentEnemyMaker = new Enemy("desi mesi minion", 69);
     }
 
     void KissIvailoOnTheCheek()
@@ -54,8 +76,11 @@ public partial class Form1 : Form
     int TakePecaDamage()
     {
         Random random = new Random();
-        int pecanewhealth = pecata.Health - random.Next(1, 20);
-        pecata.Health = pecanewhealth;
+        int rawDamage = random.Next(2, 15);
+        double damageMultiplier = 100.0 / (100 + pecata.Defense); // scalable defense formula
+        int reducedDamage = Convert.ToInt32(rawDamage * damageMultiplier);
+    
+        pecata.Health -= reducedDamage;
         updatepecahealth();
         Console.WriteLine(pecata.Health);
         return pecata.Health;
@@ -64,7 +89,7 @@ public partial class Form1 : Form
     int TakeEnemyDamage()
     {
         Random random = new Random();
-        int newenemyhealth = currentEnemyMaker.Health - random.Next(1, 20);
+        int newenemyhealth = currentEnemyMaker.Health - random.Next(5, 25);
         currentEnemyMaker.Health = newenemyhealth;
         updateenemyhealth();
         Console.WriteLine(currentEnemyMaker.Health);
@@ -85,5 +110,11 @@ public partial class Form1 : Form
     {
         KissIvailoOnTheCheek();
         updatepecahealth();
+    }
+
+    private void button6_Click(object sender, EventArgs e)
+    {
+        svetla.FuckSvetla(pecata);
+        Console.WriteLine(pecata.Defense);
     }
 }
