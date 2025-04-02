@@ -2,8 +2,8 @@
 
 public class Enemy
 {
-    public string Name { get; private set; }
-    public int Health { get; private set; }
+    public string Name { get;  set; }
+    public int Health { get;  set; }
 
     public Enemy(string name, int health)
     {

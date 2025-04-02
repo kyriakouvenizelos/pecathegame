@@ -29,6 +29,7 @@ partial class Form1
     /// </summary>
     private void InitializeComponent()
     {
+        System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
         button1 = new System.Windows.Forms.Button();
         button2 = new System.Windows.Forms.Button();
         button3 = new System.Windows.Forms.Button();
@@ -37,6 +38,9 @@ partial class Form1
         button6 = new System.Windows.Forms.Button();
         currentRoom = new System.Windows.Forms.Label();
         currentEnemy = new System.Windows.Forms.Label();
+        pecahealth = new System.Windows.Forms.Label();
+        enemyhealth = new System.Windows.Forms.Label();
+        button7 = new System.Windows.Forms.Button();
         SuspendLayout();
         // 
         // button1
@@ -109,11 +113,40 @@ partial class Form1
         currentEnemy.Size = new System.Drawing.Size(164, 23);
         currentEnemy.TabIndex = 7;
         // 
+        // pecahealth
+        // 
+        pecahealth.Location = new System.Drawing.Point(166, 347);
+        pecahealth.Name = "pecahealth";
+        pecahealth.Size = new System.Drawing.Size(151, 26);
+        pecahealth.TabIndex = 8;
+        // 
+        // enemyhealth
+        // 
+        enemyhealth.Location = new System.Drawing.Point(323, 171);
+        enemyhealth.Name = "enemyhealth";
+        enemyhealth.Size = new System.Drawing.Size(100, 23);
+        enemyhealth.TabIndex = 9;
+        // 
+        // button7
+        // 
+        button7.Location = new System.Drawing.Point(8, 296);
+        button7.Name = "button7";
+        button7.Size = new System.Drawing.Size(152, 74);
+        button7.TabIndex = 10;
+        button7.Text = "kiss ivailo";
+        button7.UseVisualStyleBackColor = true;
+        button7.Click += button7_Click;
+        // 
         // Form1
         // 
         AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
         AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+        BackgroundImage = ((System.Drawing.Image)resources.GetObject("$this.BackgroundImage"));
+        BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
         ClientSize = new System.Drawing.Size(867, 450);
+        Controls.Add(button7);
+        Controls.Add(enemyhealth);
+        Controls.Add(pecahealth);
         Controls.Add(currentEnemy);
         Controls.Add(currentRoom);
         Controls.Add(button6);
@@ -125,6 +158,12 @@ partial class Form1
         Text = "Form1";
         ResumeLayout(false);
     }
+
+    private System.Windows.Forms.Button button7;
+
+    private System.Windows.Forms.Label enemyhealth;
+
+    private System.Windows.Forms.Label pecahealth;
 
     private System.Windows.Forms.Label currentRoom;
     private System.Windows.Forms.Label currentEnemy;
