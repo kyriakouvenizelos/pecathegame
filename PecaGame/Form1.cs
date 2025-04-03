@@ -8,10 +8,22 @@ public partial class Form1 : Form
     private Enemy currentEnemyMaker;
     static Random rand = new Random();
     private Svetla svetla = new Svetla(0);
+    private RoomPecaGame koridor = new RoomPecaGame("koridor");
+    RoomPecaGame firstetaj = new RoomPecaGame("firstetaj");
+    RoomPecaGame secondetaj = new RoomPecaGame("secondetaj");
+    RoomPecaGame obshtejitie = new RoomPecaGame("obshtejitie");
+    RoomPecaGame staqtanakosta = new RoomPecaGame("staqtanakosta");
+    RoomPecaGame hakaton = new RoomPecaGame("hakaton");
+    private ItemPeca currentItemPeca = null;
+    private RoomPecaGame currentPecaRoom = null;
+    private bool inFight;
     public Form1()
     {
         InitializeComponent();
         updatepecahealth();
+        startroom();
+        GetCurrentRoom();
+        
     }
 
     //fight
@@ -25,8 +37,7 @@ public partial class Form1 : Form
         {
             if (pecata.Health > 0)
             {
-                currentEnemy.Text = currentEnemyMaker.Name;
-                enemyhealth.Text = currentEnemyMaker.Health.ToString();
+                
                 if (rand.Next(100) < 15)
                 {
                     MessageBox.Show("pecata missed! MALEEEEEEEE");
@@ -45,6 +56,10 @@ public partial class Form1 : Form
                         currentEnemy.Text = null;
                         enemyhealth.Text = null;
                         currentEnemyMaker = null;
+                        turnfightoff();
+                        updatepecahealth();
+                        inFight = false;
+                        UpdateBackgroundImage();
                     }
                 }
                     
@@ -59,7 +74,21 @@ public partial class Form1 : Form
 
     void FindEnemy()
     {
-        currentEnemyMaker = new Enemy("desi mesi minion", 69);
+        if (currentPecaRoom == hakaton || currentPecaRoom == obshtejitie)
+        {
+            MessageBox.Show("no enemies to fight here Bro");
+        }
+        else
+        {
+            inFight = true;
+            UpdateBackgroundImage();
+            currentEnemyMaker = new Enemy("desi mesi minion", 69);
+            currentEnemy.Text = currentEnemyMaker.Name;
+            enemyhealth.Text = "Health: " + currentEnemyMaker.Health.ToString();
+            currentEnemy.Show();
+            enemyhealth.Show();
+            button1.Show();
+        }
     }
 
     void KissIvailoOnTheCheek()
@@ -70,7 +99,15 @@ public partial class Form1 : Form
     //find enemies
     private void button2_Click(object sender, EventArgs e)
     {
-        FindEnemy();
+        if (currentEnemyMaker == null)
+        {
+            FindEnemy();
+        }
+
+        else
+        {
+            MessageBox.Show("already in battle man");
+        }
     }
 
     int TakePecaDamage()
@@ -89,7 +126,7 @@ public partial class Form1 : Form
     int TakeEnemyDamage()
     {
         Random random = new Random();
-        int newenemyhealth = currentEnemyMaker.Health - random.Next(5, 25);
+        int newenemyhealth = currentEnemyMaker.Health - random.Next(5, 25) - Convert.ToInt32(pecata.Strength / 3);
         currentEnemyMaker.Health = newenemyhealth;
         updateenemyhealth();
         Console.WriteLine(currentEnemyMaker.Health);
@@ -98,12 +135,15 @@ public partial class Form1 : Form
 
     void updatepecahealth()
     {
-        pecahealth.Text = pecata.Health.ToString();
+        pecahealth.Text = "Health: " + pecata.Health.ToString();
+        defenselvl.Text = "Defense: "+ pecata.Defense.ToString();
+        currencyllb.Text = GetCurrencyLabel();
+        attacklbl.Text = "Attack: " + pecata.Strength.ToString();
     }
 
     void updateenemyhealth()
     {
-        enemyhealth.Text = currentEnemyMaker.Health.ToString();
+        enemyhealth.Text = "Health: " + currentEnemyMaker.Health.ToString();
     }
 
     private void button7_Click(object sender, EventArgs e)
@@ -115,6 +155,145 @@ public partial class Form1 : Form
     private void button6_Click(object sender, EventArgs e)
     {
         svetla.FuckSvetla(pecata);
+        updatepecahealth();
         Console.WriteLine(pecata.Defense);
     }
+
+    public void GetCurrentRoom()
+    {
+        currentRoom.Text = currentPecaRoom.Name;
+    }
+
+    public void FirstEtajRoom()
+    {
+        currentPecaRoom = firstetaj;
+        GetCurrentRoom();
+        button5.Hide();
+        button6.Hide();
+        this.BackgroundImage = Image.FromFile("pecathegame/etaj1.png");
+        this.BackgroundImageLayout = ImageLayout.Stretch;
+    }
+
+    public void SecondEtajRoom()
+    {
+        currentPecaRoom = secondetaj;
+        GetCurrentRoom();
+        button5.Hide();
+        button6.Hide();
+        this.BackgroundImage = Image.FromFile("pecathegame/etaj2.png");
+        this.BackgroundImageLayout = ImageLayout.Stretch;
+        UpdateBackgroundImage();
+    }
+
+    public void ObshtejitieRoom()
+    {
+        currentPecaRoom = obshtejitie;
+        GetCurrentRoom();
+        button5.Hide();
+        button6.Show();
+        this.BackgroundImage = Image.FromFile("pecathegame/obshtejitie.png");
+        this.BackgroundImageLayout = ImageLayout.Stretch;
+        UpdateBackgroundImage();
+    }
+
+    public void HakatonRoom()
+    {
+        currentPecaRoom = hakaton;
+        GetCurrentRoom();
+        button5.Show();
+        button6.Hide();
+        this.BackgroundImage = Image.FromFile("pecathegame/merchantRoom.png");
+        this.BackgroundImageLayout = ImageLayout.Stretch;
+        UpdateBackgroundImage();
+    }
+
+    public void startroom()
+    {
+        currentPecaRoom = koridor;
+        GetCurrentRoom();
+        button5.Hide();
+        button6.Hide();
+        this.BackgroundImage = Image.FromFile("pecathegame/koridor.png");
+        this.BackgroundImageLayout = ImageLayout.Stretch;
+        UpdateBackgroundImage();
+    }
+
+    private void button3_Click(object sender, EventArgs e)
+    {
+        if(currentEnemyMaker != null)
+        {
+            MessageBox.Show("man no run away man come on man");
+        }
+        else
+        {
+            var stai = new Form2(this);
+            stai.Show();
+        }
+    }
+
+    void turnfightoff()
+    {
+        button1.Hide();
+        pecata.Currency += rand.Next(5, 100);
+        updatepecahealth();
+        currentEnemy.Hide();
+        enemyhealth.Hide();
+    }
+
+    private void button5_Click(object sender, EventArgs e)
+    {
+        magazin magazeen = new magazin(this);
+        magazeen.BackgroundImage = Image.FromFile("pecathegame/merchant.png");
+        magazeen.BackgroundImageLayout = ImageLayout.Stretch;
+        magazeen.Show();
+    }
+    public void BuyItemPeca(ItemPeca itemPeca, magazin mag)
+    {
+        if (pecata.Currency < itemPeca.Price)
+        {
+            mag.BackgroundImage = Image.FromFile("pecathegame/angryMerchant.png");
+            mag.BackgroundImageLayout = ImageLayout.Stretch;
+        }
+        else
+        {
+            currentItemPeca = itemPeca;
+            pecata.Strength += currentItemPeca.AttackBonus;
+            pecata.Currency -= currentItemPeca.Price;
+            updatepecahealth();
+            mag.BackgroundImage = Image.FromFile("pecathegame/happyMerchant.png");
+            mag.BackgroundImageLayout = ImageLayout.Stretch;
+        }
+    }
+    public string GetCurrencyLabel()
+    {
+        return "Currency: " + pecata.Currency + " lukanki";
+    }
+    void UpdateBackgroundImage()
+    {
+        if (currentPecaRoom == null)
+            return;
+
+        string baseName = currentPecaRoom.Name switch
+        {
+            "firstetaj" => "etaj1",
+            "secondetaj" => "etaj2",
+            "hakaton" => "merchantRoom",
+            _ => currentPecaRoom.Name
+        };
+
+        string imageName = inFight ? $"{baseName}Battle.png" : $"{baseName}.png";
+
+        string fullPath = $"pecathegame/{imageName}";
+
+        if (File.Exists(fullPath))
+        {
+            this.BackgroundImage = Image.FromFile(fullPath);
+            this.BackgroundImageLayout = ImageLayout.Stretch;
+        }
+        else
+        {
+            MessageBox.Show($"Image not found: {fullPath}");
+        }
+    }
+
 }

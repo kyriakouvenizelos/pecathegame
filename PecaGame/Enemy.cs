@@ -10,9 +10,4 @@ public class Enemy
         Name = name;
         Health = health;
     }
-
-    public void DecreaseHealth(int damage)
-    {
-        Health -= damage;
-    }
 }
