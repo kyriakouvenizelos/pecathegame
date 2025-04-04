@@ -42,7 +42,7 @@ partial class magazin
         button1.Name = "button1";
         button1.Size = new System.Drawing.Size(204, 102);
         button1.TabIndex = 0;
-        button1.Text = "burkan s prudnqta na ivailo";
+        button1.Text = "burkan s prudnqta na ivailo - 100";
         button1.UseVisualStyleBackColor = true;
         button1.Click += button1_Click;
         // 
@@ -52,7 +52,7 @@ partial class magazin
         button2.Name = "button2";
         button2.Size = new System.Drawing.Size(204, 102);
         button2.TabIndex = 1;
-        button2.Text = "kukla debelana";
+        button2.Text = "kukla debelana - 500";
         button2.UseVisualStyleBackColor = true;
         button2.Click += button2_Click;
         // 
@@ -62,7 +62,7 @@ partial class magazin
         button3.Name = "button3";
         button3.Size = new System.Drawing.Size(204, 102);
         button3.TabIndex = 2;
-        button3.Text = "himikal";
+        button3.Text = "himikal - 1000";
         button3.UseVisualStyleBackColor = true;
         button3.Click += button3_Click;
         // 

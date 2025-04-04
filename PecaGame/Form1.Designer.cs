@@ -84,6 +84,7 @@ partial class Form1
         button4.TabIndex = 3;
         button4.Text = "boss fight";
         button4.UseVisualStyleBackColor = true;
+        button4.Click += button4_Click;
         // 
         // button5
         // 
@@ -120,7 +121,7 @@ partial class Form1
         // 
         currentEnemy.Location = new System.Drawing.Point(323, 148);
         currentEnemy.Name = "currentEnemy";
-        currentEnemy.Size = new System.Drawing.Size(164, 23);
+        currentEnemy.Size = new System.Drawing.Size(249, 23);
         currentEnemy.TabIndex = 7;
         currentEnemy.Visible = false;
         // 

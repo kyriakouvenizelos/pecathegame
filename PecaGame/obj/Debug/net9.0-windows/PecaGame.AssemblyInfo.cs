@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PecaGame")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+87c36afac2d0a8ecc27d1555f1e9492383192e68")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1268183191997ffa86d971039749eb21a2f6a8d3")]
 [assembly: System.Reflection.AssemblyProductAttribute("PecaGame")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PecaGame")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
